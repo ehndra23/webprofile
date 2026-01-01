@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Academic Brand | Personal Website</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --secondary: #10B981;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gray: #6B7280;
+            --lightgray: #E5E7EB;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 15px 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary);
+        }
+        
+        .menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .menu a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .menu a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        
+        .hero-content {
+            flex: 1;
+        }
+        
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary);
+            border: 2px solid var(--lightgray);
+            margin-left: 15px;
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .card-content {
+            padding: 30px;
+        }
+        
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(79, 70, 229, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--primary);
+            font-size: 24px;
+        }
+        
+        .card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .card p {
+            color: var(--gray);
+            font-size: 16px;
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background-color: #F8FAFC;
+        }
+        
+        .project-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .project-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .project-content {
+            padding: 25px;
+        }
+        
+        .project-tags {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .tag {
+            padding: 5px 10px;
+            border-radius: 50px;
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary);
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .project-title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .project-desc {
+            color: var(--gray);
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .project-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--lightgray);
+            padding-top: 15px;
+        }
+        
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .author-name {
+            font-weight: 600;
+            font-size: 16px;
+        }
+        
+        .author-title {
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: #F8FAFC;
+        }
+        
+        .contact-content {
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--lightgray);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+        
+        .form-input:focus, .form-textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+        
+        .form-textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(79, 70, 229, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+        
+        .contact-item p {
+            color: var(--gray);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .footer-col h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #D1D5DB;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #374151;
+            color: #9CA3AF;
+            font-size: 14px;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .menu {
+                display: none;
+            }
+            
+            .menu-btn {
+                display: block;
+            }
+            
+            .section-title {
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">MyAcademicBrand</div>
+                <ul class="menu">
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#about">Tentang</a></li>
+                    <li><a href="#projects">Proyek</a></li>
+                    <li><a href="#testimonials">Testimoni</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+                <button class="menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero container">
+        <div class="hero-content">
+            <h1>Membangun Masa Depan Akademik Yang Cemerlang</h1>
+            <p>Mahasiswa Teknik Informatika dengan passion dalam teknologi dan inovasi. Berbagi pengetahuan dan pengalaman untuk menginspirasi generasi penerus.</p>
+            <div>
+                <a href="#projects" class="btn">Lihat Portofolio</a>
+                <a href="#contact" class="btn btn-secondary">Hubungi Saya</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Proyek Akademik</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Penghargaan</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">3.9</div>
+                    <div class="stat-label">IPK</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="hendra.jpg" alt="hendra.jpg">
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Tentang Saya</h2>
+                <p class="section-subtitle">Mahasiswa dengan semangat tinggi untuk berkembang dan memberikan dampak positif melalui teknologi</p>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Pendidikan</h3>
+                        <p>Mahasiswa Teknik Informatika di Universitas Terkemuka Madura dengan fokus pada pengembangan aplikasi dan kecerdasan buatan.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Keterampilan</h3>
+                        <p>Menguasai berbagai bahasa pemrograman, pengembangan web, analisis data, dan desain UI/UX dengan pendekatan yang inovatif.</p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-icon">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3>Pencapaian</h3>
+                        <p>Juara kompetisi sains teknologi dan kontributor aktif dalam komunitas open source. Presenter di seminar teknologi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Proyek Akademik</h2>
+                <p class="section-subtitle">Beberapa karya terbaik yang telah saya kerjakan selama perkuliahan</p>
+            </div>
+            <div class="project-cards">
+                <div class="project-card">
+                    <img src="coding.jpg" alt="Project 1" class="project-img">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Machine Learning</span>
+                            <span class="tag">Python</span>
+                        </div>
+                        <h3 class="project-title">Sistem Prediksi Cuaca</h3>
+                        <p class="project-desc">Aplikasi prediksi cuaca menggunakan algoritma machine learning dengan tingkat akurasi 95%.</p>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">Lihat Proyek <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="coding2.webp" alt="Project 2" class="project-img">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Web Development</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <h3 class="project-title">Platform E-Learning</h3>
+                        <p class="project-desc">Platform pembelajaran online interaktif untuk mahasiswa dengan fitur kuis dan forum diskusi.</p>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">Lihat Proyek <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="codingan3.jpg" alt="Project 3" class="project-img">
+                    <div class="project-content">
+                        <div class="project-tags">
+                            <span class="tag">Mobile App</span>
+                            <span class="tag">Flutter</span>
+                        </div>
+                        <h3 class="project-title">Aplikasi Manajemen Tugas</h3>
+                        <p class="project-desc">Aplikasi mobile untuk membantu mahasiswa mengatur jadwal perkuliahan dan tugas dengan notifikasi.</p>
+                        <div class="project-footer">
+                            <a href="#" class="project-link">Lihat Proyek <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Testimoni</h2>
+                <p class="section-subtitle">Apa yang dikatakan dosen dan rekan tentang saya</p>
+            </div>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Mahasiswa yang sangat berbakat dengan kemampuan problem-solving yang luar biasa. Selalu memberikan hasil yang melampaui ekspektasi."</p>
+                    <div class="testimonial-author">
+                        <img src="royhan.jpg" alt="Royhan" class="author-img">
+                        <div>
+                            <div class="author-name">Royhan</div>
+                            <div class="author-title">Rekan Kerja</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Partner proyek yang luar biasa. Kontribusinya sangat signifikan dan selalu membawa ide-ide kreatif dalam setiap diskusi."</p>
+                    <div class="testimonial-author">
+                        <img src="amrosi.jpg" alt="Amrosi" class="author-img">
+                        <div>
+                            <div class="author-name">Amrosi</div>
+                            <div class="author-title">Rekan Penelitian</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Kemampuan teknis yang sangat baik dipadukan dengan soft skill yang menonjol membuatnya menjadi mahasiswa yang sangat potensial."</p>
+                    <div class="testimonial-author">
+                        <img src="ridho.jpg" alt="Ridho" class="author-img">
+                        <div>
+                            <div class="author-name">Moh Ali Ridho</div>
+                            <div class="author-title">Rekan Organisasi</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Hubungi Saya</h2>
+                <p class="section-subtitle">Tertarik untuk berkolaborasi atau memiliki pertanyaan? Jangan ragu untuk menghubungi saya</p>
+            </div>
+            <div class="contact-content">
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name" class="form-label">Nama</label>
+                        <input type="text" id="name" class="form-input" placeholder="Masukkan nama Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" class="form-input" placeholder="Masukkan email Anda">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subjek</label>
+                        <input type="text" id="subject" class="form-input" placeholder="Masukkan subjek pesan">
+                    </div>
+                    <div class="form-group">
+                        <label for="message" class="form-label">Pesan</label>
+                        <textarea id="message" class="form-textarea" placeholder="Tulis pesan Anda di sini"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Kirim Pesan</button>
+                </form>
+                <div class="contact-info">
+                    <h3>Informasi Kontak</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <p>efendih064@gmail.com</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <p>+62 818 1883 6509</p>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <p>Fakultas Sains dan Teknologi, Universitas Bahaudin Mudhary, Madura</p>
+                        </div>
+                    </div>
+                    <h3>Media Sosial</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h4>MyAcademicBrand</h4>
+                    <p>Membangun masa depan yang lebih baik melalui inovasi teknologi dan berbagi pengetahuan.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Tautan Cepat</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                        <li><a href="#projects">Proyek</a></li>
+                        <li><a href="#testimonials">Testimoni</a></li>
+                        <li><a href="#contact">Kontak</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Layanan</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Konsultasi Proyek</a></li>
+                        <li><a href="#">Pengembangan Web</a></li>
+                        <li><a href="#">Desain UI/UX</a></li>
+                        <li><a href="#">Analisis Data</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Tutorial</a></li>
+                        <li><a href="#">E-book</a></li>
+                        <li><a href="#">Webinar</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 MyAcademicBrand. Semua hak dilindungi.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple Mobile Menu Toggle
+        const menuBtn = document.querySelector('.menu-btn');
+        const menu = document.querySelector('.menu');
+        
+        menuBtn.addEventListener('click', () => {
+            menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Reset menu display when window resizes
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                menu.style.display = 'flex';
+            } else {
+                menu.style.display = 'none';
+            }
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[
